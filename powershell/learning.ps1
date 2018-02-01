@@ -11,6 +11,51 @@ cls
 ipconfig | Out-File -FilePath C:\Users\kanavane\Desktop\ipconfig.txt; C:\Users\kanavane\Desktop\ipconfig.txt # the last part after ; opens the text file
 
 
+Set-PSDebug -Strict
+#$global:VerbosePreference = 'Continue'
+#$global:DebugPreference = 'Continue'
+#$global:ErrorActionPreference = 'Stop'
+
+
+# reading and writing CSV files
+
+# string formatting
+$name = "man"
+$msg = "Hi, {0}" -f $name
+Write-Host $msg
+
+# loops
+for ($i = 1; $i -le 5; $i++)
+{
+    Write-Host $i
+}
+
+$alpha = @("a", "b", "c")
+foreach($item in $alpha)
+{
+    Write-Host("Item: ", $item)
+}
+
+
+# getting system info
+$os = Get-WMIObject win32_operatingsystem
+Write-Host $os.OSArchitecture
+
+
+# accessing env vars
+$computerName = $env:COMPUTERNAME
+Write-Host $computerName
+
+# execute command, for example here I am running netsh
+$NetshParams = "interface dump"
+$netshCommand = ('netsh -c {0}' -f $NetshParams)
+Write-Host ('Executing netsh: {0}' -f $netshCommand)
+$netshResult = Invoke-Expression $netshCommand
+Write-Host ('Netsh result: {0}' -f ($netshResult | Out-String))
+if ($LASTEXITCODE -ne 0)
+{
+    throw ('Netsh failed. Exit code: {0}. Logs: {1}' -f $LASTEXITCODE, ($netshResult | Out-String))
+}
 
 # Files
 
