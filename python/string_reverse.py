@@ -1,0 +1,8 @@
+data = "ofni.72eecba8wlfw; ofni.196517b5wlfw; ofni.a11ecd39wlfw; ofni.55b2d2a1wlfw; ofni.0c0d2848wlfw; ofni.1790a2a5wlfw; ofni.f5d04db8wlfw; ofni.5ed6322awlfw; ofni.50abdfb2wlfw.281606bus; ofni.50abdfb2wlfw; ofni.ad6d52b8wlfw.ca51febus; ofni.ad6d52b8wlfw; ofni.b17c81afwlfw; ofni.b17c81afwlfw.d206f3bus; ofni.85a83be1wlfw.8a6484bus; ofni.85a83be1wlfw.6fbd16bus.cded47bus; ofni.85a83be1wlfw; ofni.85a83be1wlfw.6fbd16bus; ofni.56979121wlfw.ea9690bus; ofni.56979121wlfw.f55204bus.e5392fbus; ofni.56979121wlfw; ofni.56979121wlfw.f55204bus; ofni.683033c0wlfw.f83b99bus; ofni.943103f9wlfw.90a16bbus; ofni.7ab81540wlfw.07f6b9bus; ofni.7ab81540wlfw.3435fabus; ofni.daaf6ea9wlfw.410665bus; ofni.daaf6ea9wlfw; ofni.daaf6ea9wlfw.d0fa80bus; ofni.b9d273c9wlfw; ofni.69447bd4wlfw; ofni.e6ea9178wlfw.10b068bus; ofni.b6a8e74bwlfw.b45327bus; ofni.b6a8e74bwlfw; ofni.a98dcb69wlfw; ofni.1c3f3baewlfw; ofni.0d228d50wlfw; ofni.7f104d26wlfw; ofni.8cf5779fwlfw; ofni.01b65319wlfw; ofni.c79966bewlfw; ofni.25db2a3ewlfw; ofni.8b34f7e2wlfw; ofni.0f43c7fbwlfw; ofni.73be81e4wlfw; ofni.af34361dwlfw; ofni.e8475396wlfw; ofni.9602e863wlfw; ofni.8ffdf2c6wlfw; ofni.62784bdcwlfw; ofni.89258164wlfw; ofni.339efa68wlfw; ofni.41e225b2wlfw; ofni.d095f751wlfw; ofni.df4574abwlfw; ofni.f228ebedwlfw; ofni.e22511f7wlfw; ofni.b4eadbc5wlfw; ofni.05daa44awlfw; ofni.ba898dbdwlfw; ofni.3be44596wlfw; ofni.32691d82wlfw; ofni.5566a7f2wlfw; ofni.3e0e6780wlfw; ofni.f7fbd0e9wlfw; ofni.a914da51wlfw; ofni.b5eb5070wlfw; ofni.86aa2441wlfw; ofni.60f7991awlfw; ofni.f214aba0wlfw; moc.tset-losm.8c1r1e0c9s;"
+data_as_array = data.split(";")
+
+data_modified = []
+for item in data_as_array:
+    data_modified.append(item[::-1])
+
+print(str(data_modified))
