@@ -1,3 +1,4 @@
+# Example invocation: python http_request.py http://www.google.com --verbose
 import urllib.request
 import urllib.error
 import argparse
