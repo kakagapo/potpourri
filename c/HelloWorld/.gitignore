@@ -3,7 +3,7 @@ CMakeFiles
 CMakeLists.txt
 cmake_install.cmake
 
-
+.vs
 *.sln
 *.vcxproj
 *.vcxproj.filters
