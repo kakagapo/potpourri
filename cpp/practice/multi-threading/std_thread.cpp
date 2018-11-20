@@ -1,13 +1,13 @@
 // To build: g++ std_thread.cpp -std=c++17 -lpthread
 #include <thread>
-#include <stdio>
+#include <iostream>
 
 using namespace std;
 
-void* thread_operation(void* param){
+void* thread_operation(){
     for(int i=0; i<5; i++){
         // std::this_thread is a namespace and is used to group functions accessing current thread.
-        count << "Hi number " << i << " from thread " << this_thread::get_id();
+        cout << "Hi number " << i << " from thread " << this_thread::get_id() << endl;
     }
 }
 
