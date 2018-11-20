@@ -1,8 +1,11 @@
 // To build : g++ word_count.cpp
-// To run : cat some_file.txt | a.out
+// To run : echo "ha ha ha" | ./a.out
 #include <stdlib.h>
 #include <stdio.h>
-#include <cctype.h>
+#include <iostream>
+#include <ctype.h>
+
+using namespace std;
 
 int main(int argc, char** argv)
 {
@@ -26,9 +29,8 @@ int main(int argc, char** argv)
     {
         perror("Incorrect number of args.");
     }
-    while((ch = read_from_stdin ? getchar() : getc(f)) != EOF)
+    while((ch = (read_from_stdin ? getchar() : getc(f))) != EOF)
     {
-        num_chars++;
         if(ch == '\n')
         {
             num_lines++;
@@ -44,17 +46,18 @@ int main(int argc, char** argv)
         }
         else
         {
+            // not counting space chars here but wc does
             num_chars++;
         }
         prev_ch = ch;
     } // end while
 
-    if(!isspace(prev_ch) && prev_c != NULL)
+    if(!isspace(prev_ch) && prev_ch != NULL)
     {
         num_words++;
     }
 
-    cout << "characters = " << num_chars << ", words = " << num_words << ", lines = " num_lines;
+    cout << "characters = " << num_chars << ", words = " << num_words << ", lines = " << num_lines << endl;
     return 0;
 
 }
