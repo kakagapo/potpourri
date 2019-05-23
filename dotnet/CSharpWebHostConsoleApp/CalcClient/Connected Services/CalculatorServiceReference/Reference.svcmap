@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6e68ec62-4a26-4592-afa9-7a8d1baed3db" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:18080/root" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CalculatorService.wsdl" MetadataType="Wsdl" ID="07f8ef30-91fe-4ce4-8596-e8cc9e787a77" SourceId="1" SourceUrl="http://localhost:18080/root?wsdl" />
+    <MetadataFile FileName="root.xsd" MetadataType="Schema" ID="4b167def-692c-4746-831a-f8d4acd24552" SourceId="1" SourceUrl="http://localhost:18080/root?xsd=xsd0" />
+    <MetadataFile FileName="root1.xsd" MetadataType="Schema" ID="99e90515-9a40-4fb8-a92d-6c16835d865c" SourceId="1" SourceUrl="http://localhost:18080/root?xsd=xsd1" />
+    <MetadataFile FileName="root2.xsd" MetadataType="Schema" ID="716f0a5c-48c7-4ee8-8d0a-72a789f8de08" SourceId="1" SourceUrl="http://localhost:18080/root?xsd=xsd2" />
+    <MetadataFile FileName="root.disco" MetadataType="Disco" ID="0926bd2f-93b2-4e82-a9a5-9d61e6a41509" SourceId="1" SourceUrl="http://localhost:18080/root?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
