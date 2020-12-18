@@ -12,10 +12,9 @@ struct chunk
 
 typedef struct chunk chunk_t;
 
-// this will come in handly when you have to figure out the start of the chunk header given
+// This will come in handly when you have to figure out the start of the chunk header given
 // a pointer to chunk payload during free.
-const int CHUNK_HEADER_SIZE = sizeof(size_t) + 1 + (2 * sizeof(chunk_t *));
-
+const int CHUNK_HEADER_SIZE = sizeof(chunk_t);
 
 struct free_list
 {
@@ -36,18 +35,24 @@ struct allocated_list
 typedef struct allocated_list allocated_list_t;
 static allocated_list_t allocated_list_instace;
 
-void* my_malloc(size_t size)
+void* allocate_memory(size_t size)
 {
     if(free_chunk_list != NULL)
     {
-        // Todo: go through free list and return a free chunk
+        // Go through free list and return a free chunk
         chunk_t* current_chunk = free_chunk_list->start;
         while(current_chunk != NULL)
         {
             assert(!current_chunk->allocated);
+
             if(current_chunk->chunk_size > size)
             {
-                // 
+                size_t required_size = size + CHUNK_HEADER_SIZE;
+                if(current_chunk->chunk_size > required_size)
+                {
+                    // We have enough extra space to split
+                    
+                }                
             }
             else if (current_chunk->chunk_size == size)
             {

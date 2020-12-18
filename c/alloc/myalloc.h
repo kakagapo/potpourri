@@ -1,4 +1,4 @@
 #include <stdlib.h>
 
-void* my_malloc(size_t size);
-void my_free(void* ptr);
+void* allocate_memory(size_t size);
+void free(void* ptr);
