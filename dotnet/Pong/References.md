@@ -1,0 +1,5 @@
+- https://en.wikipedia.org/wiki/Box-drawing_character
+- https://stackoverflow.com/questions/4511098/print-ascii-line-art-characters-in-c-sharp-console-application
+- http://archives.miloush.net/michkap/archive/2010/04/07/9989346.html
+- http://www.asciitable.com/
+- https://www.codeproject.com/Tips/1091249/Drawing-a-Rectangle-in-the-Csharp-Console
