@@ -2,10 +2,9 @@ import requests
 from pprint import pprint
 import getpass
 
-username = getpass.getuser()
-password = getpass.getpass()
-
 tenantId = input("Enter tenant ID: ")
+username = input("Enter username: ")
+password = getpass.getpass()
 
 # new endpoint = login.microsoftonline.com and 
 # old endpoint = login.windows.net
