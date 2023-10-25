@@ -1,10 +1,18 @@
 #!/usr/bin/env python
 
 import sys, getopt
-
+from enum import StrEnum, auto
+from string import Template
 from PIL import Image
 from PIL.ExifTags import TAGS
 from PIL.ExifTags import GPSTAGS
+
+DEFAULT_OUTFILE_FORMAT = "copy_${name}"
+
+class SubCommands(StrEnum):
+    DumpMetadata = auto()
+    DumpGeoMetadata = auto()
+    StripMetadata = auto()
 
 def get_exif(filename):
     image = Image.open(filename)
@@ -33,20 +41,21 @@ def get_geotagging(exif):
 
     return geotagging
 
-def strip_geotagging(file):
+def strip_all_exif_metadata(inputImageFile, outputImageFileName):
     # todo
-    pass
-
-def strip_all_exif_metadata(fileIn, fileOut):
-    # todo
-    image = Image.open(fileIn)
+    image = Image.open(inputImageFile)
 
     # next 3 lines strip exif
     data = list(image.getdata())
     image_without_exif = Image.new(image.mode, image.size)
     image_without_exif.putdata(data)
-    image_without_exif.save('image_file_without_exif.jpeg')
+    image_without_exif.save(outputImageFileName)
 
+def get_output_file_name(inputFileName, outputFileName):
+    returnValue = outputFileName
+    if(not outputFileName):
+            returnValue = Template(DEFAULT_OUTFILE_FORMAT).substitute()
+    return returnValue
 
 def add_layer_and_show(backgroundImage, foregroundImage):
     backgroundImage.paste(foregroundImage, (0, 0), foregroundImage)
@@ -60,6 +69,7 @@ def main(argv):
         opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
     except getopt.GetoptError:
         print('Image_misc.py -c <command> -i <inputfile> -o <outputfile>')
+        print('Supported commands: ')
         sys.exit(2)
 
     for opt, arg in opts:
@@ -76,15 +86,15 @@ def main(argv):
     print('Input file is "', inputfile)
     print('Output file is "', outputfile)
 
-    if(command == "dump-metadata"):
+    if(command == SubCommands.DumpMetadata):
         exif = get_exif(inputfile)
         labeled = get_labeled_exif(exif)
         print(labeled)
-    elif(command == "dump-geo-metadata"):
+    elif(command == SubCommands.DumpGeoMetadata):
         exif = get_exif(inputfile)
         geo_info = get_geotagging(exif)
         print(geo_info)
-    elif(command == "strip-metadata"):
-        if(not outputfile):
-            outputfile = "copy_" + inputfile
-        strip_all_exif_metadata(inputfile, outputfile)
+    elif(command == SubCommands.StripMetadata):
+        # todo: make this script work with different path format (relative and absolute)
+        # should have a mechanism to strip just the file name from inputfile and outputfile variables 
+        strip_all_exif_metadata(inputfile, get_output_file_name(inputfile, outputfile))
