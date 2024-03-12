@@ -1,3 +1,4 @@
+# from youtube tutorial by NeuralNine 
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -10,14 +11,16 @@ def mandelbrot(c, max_iter):
     return max_iter
 
 def mandelbrot_set(xmin, xmax, ymin, ymax, width, height, max_iter):
+    # linspace function is used to generate evenly spaced numbers over a specified interval
     x = np.linspace(xmin, xmax, width)
-    y = np.linspace(ymin, ymax, width) # possibly the 3rd arg should be height
+    y = np.linspace(ymin, ymax, height)
     mset = np.zeros((height, width))
 
     for i in range(height):
         for j in range(width):
             c = complex(x[j], y[i])
             mset[i, j] = mandelbrot(c, max_iter)
+            print(f'mset[{i}][{j}]: {mset[i,j]}')
     
     return mset
 
