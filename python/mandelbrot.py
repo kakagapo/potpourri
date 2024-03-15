@@ -2,6 +2,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+# checking to see if the value diverges in a loop, as per the def of mandelbrot set it should not
 def mandelbrot(c, max_iter):
     z = 0
     for n in range(max_iter):
