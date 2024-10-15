@@ -1,14 +1,25 @@
-﻿# list of all aliases
+﻿# example showing how to create an object with properties mentioned
+$person = New-Object PSObject | Select-Object Name, Title, Sex;
+$person.Name = "John Doe";
+$person.Title = "Sir"
+$person.Sex = "Male";
+
+# to import a module
+Import-Module .\MyModule.psm1 -Global -Force
+
+# list of all aliases
 Get-Alias 
 # specific info about ps alias 
 Get-Alias ps 
 
-# CMD comamnds
+# CMD commands
 ipconfig
 cls
 
 # pipe
-ipconfig | Out-File -FilePath C:\Users\kanavane\Desktop\ipconfig.txt; C:\Users\kanavane\Desktop\ipconfig.txt # the last part after ; opens the text file
+
+# last part after semi-color opens the text file
+ipconfig | Out-File -FilePath C:\Users\kanavane\Desktop\ipconfig.txt; C:\Users\kanavane\Desktop\ipconfig.txt 
 
 
 Set-PSDebug -Strict
