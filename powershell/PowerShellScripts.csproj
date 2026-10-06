@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
+    <PowerShellExecutable>pwsh.exe</PowerShellExecutable>
+    <PowerShellSigningCertificateSubject>CN=MySelfSignedCert</PowerShellSigningCertificateSubject>
+    <PowerShellSigningCertificateThumbprint></PowerShellSigningCertificateThumbprint>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Scripts\*.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>%(Filename)%(Extension)</TargetPath>
+    </Content>
+    <None Include="build\Sign-PowerShellScripts.ps1" />
+  </ItemGroup>
+
+  <Target Name="SignPowerShellScripts" AfterTargets="CopyFilesToOutputDirectory">
+    <ItemGroup>
+      <PowerShellScriptToSign Include="@(Content->'$(TargetDir)%(TargetPath)')" />
+    </ItemGroup>
+
+    <Exec Command="&quot;$(PowerShellExecutable)&quot; -NoProfile -NonInteractive -ExecutionPolicy Bypass -File &quot;$(MSBuildProjectDirectory)\build\Sign-PowerShellScripts.ps1&quot; -CertificateThumbprint &quot;$(PowerShellSigningCertificateThumbprint)&quot; -CertificateSubject &quot;$(PowerShellSigningCertificateSubject)&quot; -Path &quot;%(PowerShellScriptToSign.Identity)&quot;" />
+  </Target>
+
+</Project>
