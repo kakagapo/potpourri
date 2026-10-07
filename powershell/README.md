@@ -4,6 +4,17 @@
 the solution copies the scripts to `bin\<Configuration>\net8.0` and signs the
 copies with a SHA-256 Authenticode signature.
 
+## Scripts
+
+- `CertificateCreate.ps1` creates a self-signed code-signing certificate.
+- `Update-DomainFederationConfiguration.ps1` updates the Microsoft Graph
+  federation configuration for a verified Microsoft Entra domain.
+- `learning.ps1` contains general PowerShell examples.
+
+Run a script with `-Help` to display its parameters and examples.
+
+## Build and signing
+
 Create the default code-signing certificate:
 
 ```powershell
